@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 
 const Features = () => {
   return (
-    <section className="bg-gradient-to-r from-black via-gray-900 to-black text-white py-24 overflow-hidden">
+    <section className="bg-gradient-to-r from-black via-gray-900 to-black text-white py-24 overflow-hidden" id="features">
       <div className="container mx-auto px-6 md:px-12 relative">
         <motion.h2 
           className="text-6xl font-bold text-center mb-20 text-transparent bg-clip-text bg-gradient-to-r from-green-400 via-blue-500 to-purple-600"

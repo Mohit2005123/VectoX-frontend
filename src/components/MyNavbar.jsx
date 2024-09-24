@@ -1,5 +1,6 @@
-import { Link } from 'react-router-dom';
+import { Link as ScrollLink } from 'react-scroll';  // Import react-scroll
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 const MyNavbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -11,11 +12,7 @@ const MyNavbar = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 100) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
+      setIsScrolled(window.scrollY > 100);
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -40,10 +37,10 @@ const MyNavbar = () => {
         
         {/* Navbar Links (Desktop) */}
         <div className="hidden md:flex items-center space-x-8">
-          <NavLink to="/" isScrolled={isScrolled}>Home</NavLink>
-          <NavLink to="/about" isScrolled={isScrolled}>About</NavLink>
-          <NavLink to="/features" isScrolled={isScrolled}>Features</NavLink>
-          <NavLink to="/iconedit" isScrolled={isScrolled}>Edit SVG</NavLink>
+          <NavLink to="about" isScrolled={isScrolled}>About</NavLink>
+          <NavLink to="features" isScrolled={isScrolled}>Features</NavLink>
+          {/* Use RegularNavLink for "Edit SVG" */}
+          <RegularNavLink to="/iconedit" isScrolled={isScrolled}>Edit SVG</RegularNavLink>
         </div>
 
         {/* Mobile Menu Toggle */}
@@ -74,9 +71,8 @@ const MyNavbar = () => {
       {isOpen && (
         <div className="md:hidden">
           <div className="px-4 py-4 space-y-3 bg-gradient-to-b from-gray-900 via-black to-gray-900 bg-opacity-95 backdrop-blur-md">
-            <MobileNavLink to="/" onClick={toggleMenu}>Home</MobileNavLink>
-            <MobileNavLink to="/about" onClick={toggleMenu}>About</MobileNavLink>
-            <MobileNavLink to="/features" onClick={toggleMenu}>Features</MobileNavLink>
+            <MobileNavLink to="about" onClick={toggleMenu}>About</MobileNavLink>
+            <MobileNavLink to="features" onClick={toggleMenu}>Features</MobileNavLink>
             <MobileNavLink to="/iconedit" onClick={toggleMenu}>Edit SVG</MobileNavLink>
           </div>
         </div>
@@ -95,24 +91,42 @@ const NavLink = ({ to, children, isScrolled }) => {
     : 'bg-gray-700';
 
   return (
-    <Link
+    <ScrollLink
       to={to}
-      className={`${textColor} ${hoverColor} transition duration-300 relative group`}
+      smooth={true}
+      duration={500}
+      className={`${textColor} ${hoverColor} transition duration-300 relative group cursor-pointer`}
     >
       {children}
       <span className={`absolute left-0 bottom-0 w-full h-0.5 ${underlineColor} transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300`}></span>
+    </ScrollLink>
+  );
+};
+
+const RegularNavLink = ({ to, children, isScrolled }) => {
+  const textColor = isScrolled ? 'text-gray-300' : 'text-gray-700';
+  const hoverColor = isScrolled
+    ? 'hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-gray-400 hover:via-gray-300 hover:to-white'
+    : 'hover:text-gray-700';
+  
+  return (
+    <Link to={to} className={`${textColor} ${hoverColor} transition duration-300 relative group`}>
+      {children}
+      <span className={`absolute left-0 bottom-0 w-full h-0.5 ${isScrolled ? 'bg-gradient-to-r from-gray-500 via-gray-400 to-gray-300' : 'bg-gray-700'} transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300`}></span>
     </Link>
   );
 };
 
 const MobileNavLink = ({ to, onClick, children }) => (
-  <Link
+  <ScrollLink
     to={to}
+    smooth={true}
+    duration={500}
     onClick={onClick}
-    className="block text-gray-300 hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-gray-400 hover:via-gray-300 hover:to-white transition duration-300"
+    className="block text-gray-300 hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-gray-400 hover:via-gray-300 hover:to-white transition duration-300 cursor-pointer"
   >
     {children}
-  </Link>
+  </ScrollLink>
 );
 
 export default MyNavbar;

@@ -7,6 +7,7 @@ import Footer from "../components/Footer";
 import FAQ from "../components/FAQ";
 import Testimonials from "../components/Testimonials";
 import HowItWorks from "../components/HowItWorks";
+import AboutTheDev from "../components/AboutTheDev";
 function Home() {
   return(
     <div>
@@ -15,6 +16,7 @@ function Home() {
         <Features></Features>
         <CallToAction></CallToAction>
         <FAQ></FAQ>
+        <AboutTheDev></AboutTheDev>
         <Footer></Footer>
     </div>
   )

@@ -1,11 +1,12 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom"; // Import Link for internal routing
 
 const CallToAction = () => {
   return (
     <section className="bg-gradient-to-r from-gray-900 via-purple-900 to-blue-900 text-white py-20 relative overflow-hidden">
       <motion.div
-        className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmYiIGZpbGwtb3BhY2l0eT0iMC4xIj48cGF0aCBkPSJNMzYgMzRjMC0yLjIwOTEzOS0xLjc5MDg2MS00LTQtNHMtNCAxLjc5MDg2MS00IDQgMS43OTA4NjEgNCA0IDQgNC0xLjc5MDg2MSA0LTR6bTAtMThjMC0yLjIwOTEzOS0xLjc5MDg2MS00LTQtNHMtNCAxLjc5MDg2MS00IDQgMS43OTA4NjEgNCA0IDQgNC0xLjc5MDg2MSA0LTR6bTE4IDBjMC0yLjIwOTEzOS0xLjc5MDg2MS00LTQtNHMtNCAxLjc5MDg2MS00IDQgMS43OTA4NjEgNCA0IDQgNC0xLjc5MDg2MSA0LTR6bS0xOCAxOGMwLTIuMjA5MTM5LTEuNzkwODYxLTQtNC00cy00IDEuNzkwODYxLTQgNCAxLjc5MDg2MSA0IDQgNCA0LTEuNzkwODYxIDQtNHoiLz48L2c+PC9nPjwvc3ZnPg==')] opacity-10"
+        className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmYiIGZpbGwtb3BhY2l0eT0iMC4xIj48cGF0aCBkPSJNMzYgMzRjMC0yLjIwOTEzOS0xLjc5MDg2MS00LTQtNHMtNCAxLjc5MDg2MS00IDQgMS43OTA4NjEgNCA0IDQgNC00LTEuNzkwODYxIDQtNHptMC0xOGMwLTIuMjA5MTM5LTEuNzkwODYxLTQtNC00cy00IDEuNzkwODYxLTQgNCAxLjc5MDg2MSA0IDQgNCA0LTEuNzkwODYxIDQtNHptMTggMGMwLTIuMjA5MTM5LTEuNzkwODYxLTQtNC00cy00IDEuNzkwODYxLTQgNCAxLjc5MDg2MSA0IDQgNCA0LTEuNzkwODYxIDQtNHptLTE4IDE4YzAtMi4yMDkxMzktMS43OTA4NjEtNC00LTRzLTEuNzkwODYxIDQtNCA0IDQuMjA5MTM5IDQgNCA0LTEuNzkwODYxIDQtNHoiLz48L2c+PC9nPjwvc3ZnPg==')] opacity-10"
         initial={{ opacity: 0 }}
         animate={{ opacity: 0.1 }}
         transition={{ duration: 1 }}
@@ -38,13 +39,15 @@ const CallToAction = () => {
           >
             No sign-ups required. Begin designing immediately.
           </motion.p>
-          <motion.button
-            className="bg-gradient-to-r from-blue-500 to-purple-500 text-white px-10 py-4 rounded-full text-xl font-semibold transition-all duration-300 hover:from-blue-600 hover:to-purple-600 hover:shadow-lg transform hover:scale-105"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            Get Started for Free
-          </motion.button>
+          <Link to="/iconedit"> {/* Add internal link */}
+            <motion.button
+              className="bg-gradient-to-r from-blue-500 to-purple-500 text-white px-10 py-4 rounded-full text-xl font-semibold transition-all duration-300 hover:from-blue-600 hover:to-purple-600 hover:shadow-lg transform hover:scale-105"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              Get Started for Free
+            </motion.button>
+          </Link>
         </motion.div>
       </div>
       <motion.div
