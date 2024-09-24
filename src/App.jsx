@@ -2,7 +2,7 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
-import IconEdit from "./pages/IconEdit";
+import IconEdit from './pages/IconEdit'
 import UploadIconEdit from "./pages/UploadIconEdit";
 import NotFound from "./pages/NotFound";
 function App() {

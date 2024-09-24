@@ -35,7 +35,7 @@ const MyNavbar = () => {
       <div className="container mx-auto px-4 py-3 flex justify-between items-center">
         {/* Brand Logo */}
         <Link to="/" className={`text-2xl font-bold ${textColor} ${hoverColor} transition duration-300`}>
-          SVG Editor
+          VectorX
         </Link>
         
         {/* Navbar Links (Desktop) */}
