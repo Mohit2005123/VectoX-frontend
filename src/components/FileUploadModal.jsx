@@ -8,7 +8,7 @@ const FileUploadModal = ({ isOpen, onClose }) => {
   const [isUploaded, setIsUploaded] = useState(false);
   const navigate = useNavigate();
   const modalRef = useRef(null);
-
+  
   const onDrop = useCallback((acceptedFiles) => {
     const file = acceptedFiles[0];
     handleFile(file);

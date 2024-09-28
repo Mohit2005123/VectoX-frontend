@@ -116,6 +116,7 @@ const Hero = () => {
           Get Started
         </motion.button>
       </motion.div>
+      <img src="/images/test.svg" alt="" />
     </div>
   );
 };

@@ -233,7 +233,7 @@ const UploadIconEdit = () => {
                                     stroke={strokeColor}
                                     strokeWidth={strokeWidth}
                                 >
-                                    <circle cx="0" cy="0" r="0" />
+                                    {/* <circle cx="0" cy="0" r="0" /> */}
                                     {iconData.path.map((path, index) => (
                                         <path
                                             key={index}

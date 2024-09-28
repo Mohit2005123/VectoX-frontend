@@ -7,6 +7,8 @@ import IconModal from '../components/IconModal';
 import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Button } from "@nextui-org/react";
 import confetti from 'canvas-confetti';
 import FileUploadModal from '../components/FileUploadModal';
+import AIModal from '../components/AIModal';
+import { Sparkles } from 'lucide-react';
 const IconEdit = () => {
   const [selectedIcon, setSelectedIcon] = useState('a-arrow-down');
   const [size, setSize] = useState(400);
@@ -23,7 +25,8 @@ const IconEdit = () => {
   const [backgroundColor, setBackgroundColor] = useState('#ffffff'); // New background color property
   const [isModalOpen, setIsModalOpen] = useState(false); // Modal state
   const [isopenFileModal, setIsOpenFileModal] = useState(false);
-  const iconData = icons[selectedIcon];
+  const [isOpenAIModal, setISOpenAIModal]= useState(false);
+  const iconData= icons[selectedIcon];
   const previewRef = useRef();
   const triggerConfetti = () => {
     confetti({
@@ -231,7 +234,20 @@ const IconEdit = () => {
         </div>
 
         {/* Right column - Preview */}
-        <div className="w-full lg:w-2/3 flex justify-start items-center pl-10">
+        <div className="w-full lg:w-2/3 flex flex-col justify-center items-center pl-10 relative">
+        {/* <button 
+            onClick={() => setISOpenAIModal(true)} 
+            className="absolute top-[-20px] right-1/2 transform translate-x-1/2 bg-green-500 text-white rounded-full py-2 px-4 z-10"
+          >
+            Generate using AI
+          </button> */}
+           <Button
+            onClick={() => setISOpenAIModal(true)}
+            className="absolute top-[-30px] left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-purple-500 to-indigo-600 text-white rounded-full py-2 px-6 z-10 shadow-lg hover:shadow-xl transition-all duration-300 flex items-center space-x-2"
+          >
+            <Sparkles size={20} />
+            <span>Generate using AI</span>
+          </Button>
           <div
             className="w-[800px] h-[800px] flex items-center justify-center rounded-lg shadow-md overflow-hidden"
             style={{
@@ -294,8 +310,11 @@ const IconEdit = () => {
         setIsModalOpen={setIsModalOpen}
         setSelectedIcon={setSelectedIcon}
       />
-      <FileUploadModal isOpen={isopenFileModal} onClose={closeFileModal} />
-
+      <FileUploadModal isOpen={isopenFileModal} onClose={closeFileModal}/>
+      <AIModal
+      isOpen={isOpenAIModal}
+      onClose={()=>setISOpenAIModal(false)}
+      />
     </div>
   );
 };
